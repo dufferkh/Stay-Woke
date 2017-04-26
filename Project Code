@@ -1,3 +1,7 @@
+#include <heartRate.h>
+#include <MAX30105.h>
+#include <spo2_algorithm.h>
+
 #include <Wire.h>
 #include "MAX30105.h"
 
@@ -57,13 +61,13 @@ void loop()
       beatAvg /= RATE_SIZE;
       
     }
-    if (beatAvg < 59)
+    if (beatsPerMinute < 59)
       {
-        digitalWrite(Mot, High);
+        digitalWrite(Mot, HIGH);
         delay(5000);
       }
   }
-}
+
 
   Serial.print("IR=");
   Serial.print(irValue);
@@ -75,6 +79,6 @@ void loop()
   if (irValue < 50000)
     Serial.print(" No finger?");
 
-  Serial.println();
-  
+    Serial.println();
 }
+  
